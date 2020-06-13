@@ -1,20 +1,12 @@
 N,M,V = map(int,input().split(" "))
-board = {}
+board = [[0 for i in range(N+1)] for i in range(N+1)]
+
 for i in range(M) :
     a,b = map(int,input().split(" "))
-    if(board.get(a) == None) :
-        board[a] = [b]
-    else:
-        board[a].append(b)
+    board[a][b] = 1
+    board[b][a] = 1
 
-    if (board.get(b) == None):
-        board[b] = [a]
-    else:
-        board[b].append(a)
-
-
-for j in board :
-    board[j].sort()
+print(board)
 # print(N,M,V)
 # print(board)
 
@@ -23,38 +15,38 @@ for j in board :
 
 
 # DFS
-s = [V]
-rsDFS = []
-while(s) :
-    each = s.pop()
-    if (each not in rsDFS):
-        rsDFS.append(each)
-        list = board.get(each)
-        if(list != None) :
-            list.reverse()
-            for i in list :
-                s.append(i)
-
-for i in range(len(rsDFS)) :
-    rsDFS[i] =str(rsDFS[i])
-print(" ".join(rsDFS))
-
-
-
-# BFS
-q = [V]
-rsBFS = []
-while(q) :
-    each = q.pop(0)
-    if (each not in rsBFS):
-        rsBFS.append(each)
-        list = board.get(each)
-        if(list != None) :
-            list.reverse()
-            for i in list :
-                q.append(i)
-
-for i in range(len(rsBFS)) :
-    rsBFS[i] =str(rsBFS[i])
-print(" ".join(rsBFS))
+# s = [V]
+# rsDFS = []
+# while(s) :
+#     each = s.pop()
+#     if (each not in rsDFS):
+#         rsDFS.append(each)
+#         list = board.get(each)
+#         if(list != None) :
+#             list.reverse()
+#             for i in list :
+#                 s.append(i)
+#
+# for i in range(len(rsDFS)) :
+#     rsDFS[i] =str(rsDFS[i])
+# print(" ".join(rsDFS))
+#
+#
+#
+# # BFS
+# q = [V]
+# rsBFS = []
+# while(q) :
+#     each = q.pop(0)
+#     if (each not in rsBFS):
+#         rsBFS.append(each)
+#         list = board.get(each)
+#         if(list != None) :
+#             list.reverse()
+#             for i in list :
+#                 q.append(i)
+#
+# for i in range(len(rsBFS)) :
+#     rsBFS[i] =str(rsBFS[i])
+# print(" ".join(rsBFS))
 

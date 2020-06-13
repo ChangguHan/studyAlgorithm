@@ -72,7 +72,7 @@ class MyApp(QWidget):
 
     def RCBeam_Data(self):
 
-        rcbeam = gen.locateCenterOnScreen('rcbeam.png')
+        rcbeam = gen.locateCenterOnScreen('./rcbeam.png')
         gen.moveTo(rcbeam)
         gen.click(clicks=1, interval=0.1)
         gen.press('tab', 5, interval=0.1)
@@ -82,7 +82,7 @@ class MyApp(QWidget):
 
         time.sleep(1)
 
-        floor1 = gen.locateCenterOnScreen('1F.png')
+        floor1 = gen.locateCenterOnScreen('./1F.png')
         gen.moveTo(floor1)
 
         time.sleep(1)

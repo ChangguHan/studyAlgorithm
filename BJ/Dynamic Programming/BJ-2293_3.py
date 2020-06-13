@@ -19,7 +19,11 @@ for i in range(V+1) :
         m[0].append(0)
 
 for i in range(1,N) :
-    for j in range(0,V+1) :
+    # 여기를 다 하지말고, 나눠지는 부분만 하자
+
+    for jj in range(0, int(V/bd[i])+1):
+        j = V - bd[i]*jj
+    # for j in range(0,V+1) :
         if(j==0) : m[i].append(1)
         else :
             divMock = int(j/bd[i])

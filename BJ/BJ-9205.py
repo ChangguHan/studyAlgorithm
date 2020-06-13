@@ -1,41 +1,24 @@
-# 순열 1차원 기본문제
-# input, print 구현에 문제가 중점된듯
+# 최대 20*50으로 풀어볼까
+case = int(input())
+board = []
+for i in range(case) :
+    each= []
+    for j in range(int(input())+2) :
+        each.append(tuple(map(int,input().split(" "))))
+    board.append(each)
 
-inputL = []
-while(True) :
-    inputS = input()
-    if(inputS == '0') : break
 
-    inputL.append(list(map(int, inputS.split(" ")))[1:])
+# print(board)
 
-# print(inputL)
+# board = [[(0, 0), (1000, 0), (1000, 1000), (2000, 1000)], [(0, 0), (1000, 0), (2000, 1000), (2000, 2000)]]
+for i in board :
+    switch = 0
+    for j in range(len(i)) :
+        if(j ==0) : continue
 
-# inputL = [[1, 2, 3, 4, 5, 6, 7], [1, 2, 3, 5, 8, 13, 21, 34]]
+        if((i[j][0] - i[j-1][0]) + (i[j][1] - i[j-1][1]) > 1000) :
+            print("sad")
+            switch = 1
+            break
+    if(switch == 0) : print("happy")
 
-def dfs(eachList) :
-    global el,result
-    el = eachList
-    result = []
-    comb()
-    return result
-
-def comb(pick = []) :
-    if(len(pick) == 6) :
-        bu = pick[:]
-        result.append(bu)
-        return
-
-    if(len(pick)==0) :x=0
-    else :
-        x = el.index(int(pick[len(pick)-1])) +1
-
-    for i in range(x,len(el)) :
-        pick.append(str(el[i]))
-        comb(pick)
-        pick.pop()
-
-for i in inputL :
-    result = dfs(i)
-    for j in result :
-        print(" ".join(j))
-    print()

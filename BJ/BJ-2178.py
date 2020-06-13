@@ -1,108 +1,41 @@
-N,M = input().split(" ")
-N = int(N) -1
-M = int(M) - 1
-board = []
-for i in range(N+1) :
-    re = []
-    a = str(input())
-    for j in range(len(a)) :
-        re.append(int(a[j]))
-    board.append(re)
+import collections
+N,M = map(int,input().split(" "))
+board= []
+for i in range(N) :
+    li = []
+    txt = input()
+    for j in range(len(txt)) :
+        li.append(int(txt[j]))
+    board.append(li)
 
-visited = {}
-for i in range(N+1) :
-    visited[i] = {}
+# print(N,M)
+# print(board)
 
-class way :
-    def __init__(self, position, num):
-        self.position = position
-        self.num = num
+# N,M = 4,6
+# board = [[1, 0, 1, 1, 1, 1], [1, 0, 1, 0, 1, 0], [1, 0, 1, 0, 1, 1], [1, 1, 1, 0, 1, 1]]
 
-    def __repr__(self):
-        return str(self.position)
-    def getXY(self):
-        return self.position
-def findWay(wayi,board) :
 
-    num = wayi.num+1
-    x,y = wayi.getXY()
+q = collections.deque((0,0,[]))
 
-    result = []
-    # left
-    if x>0 and board[y][x-1] ==1:
-        result.append(way((x-1,y),num))
-    # right
-    if x<M and board[y][x+1] ==1:
-        result.append(way((x+1,y),num))
-    # top
-    if y >0 and board[y-1][x] == 1 :
-        result.append(way((x, y-1), num))
-    # down
-    if y < N and board[y+1][x] == 1:
-        result.append(way((x, y+1), num))
-    return result
+dx = [-1,1,0,0]
+dy = [0,0,1,-1]
 
-queue = [way((0,0),1)]
-while(queue) :
-    eachWay = queue.pop(0)
-    x,y = eachWay.getXY()
-    if((x,y) == (M,N)) :
-        print(eachWay.num)
+while(q) :
+    [ex,ey,visited] = q.popleft()
+
+    nv = visited[:]
+    nv.append((ex,ey))
+
+
+    if((ex,ey) == (M-1,N-1)) :
+        print(len(nv))
         break
-    elif(visited[y].get(x) == None) :
-        visited[y][x] = True
-        queue.extend(findWay(eachWay, board))
 
+    for i in range(4) :
+        ny = ey + dy[i]
+        nx = ex + dx[i]
+        # if(nx >= 0 and nx<M and ny >= 0 and ny < N and (nx,ny) not in nv) :
+        if (nx >= 0 and nx < M and ny >= 0 and ny < N and (nx, ny) not in nv):
+            if(board[ny][nx] == 1) :
+                q.append([nx,ny,nv])
 
-# N,M = input().split(" ")
-# N = int(N) -1
-# M = int(M) - 1
-# board = []
-# for i in range(N+1) :
-#     re = []
-#     a = str(input())
-#     for j in range(len(a)) :
-#         re.append(int(a[j]))
-#     board.append(re)
-#
-#
-# class way :
-#     def __init__(self, position, num,history):
-#         self.position = position
-#         self.num = num
-#         self.history = history
-#     def __repr__(self):
-#         return str(self.position)
-#     def getXY(self):
-#         return self.position
-# def findWay(wayi,board) :
-#     position = wayi.position
-#     num = wayi.num+1
-#     x,y = wayi.getXY()
-#     his = wayi.history
-#     his.append((x,y))
-#     result = []
-#     # left
-#     if x>0 and board[y][x-1] ==1 and (x-1,y) not in his :
-#         result.append(way((x-1,y),num,his))
-#     # right
-#     if x<M and board[y][x+1] ==1  and (x+1,y) not in his:
-#         result.append(way((x+1,y),num,his))
-#     # top
-#     if y >0 and board[y-1][x] == 1 and (x,y-1) not in his:
-#         result.append(way((x, y-1), num,his))
-#     # down
-#     if y < N and board[y+1][x] == 1 and (x,y+1) not in his:
-#         result.append(way((x, y+1), num,his))
-#     return result
-#
-# queue = [way((0,0),1,[])]
-# while(queue) :
-#     eachWay = queue.pop(0)
-#     if(eachWay.getXY() == (M,N)) :
-#         print(eachWay.num)
-#         break
-#     else :
-#         queue.extend(findWay(eachWay, board))
-#
-#
