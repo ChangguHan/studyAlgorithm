@@ -4,6 +4,6 @@ using namespace std;
 
 int main() {
 
-    cout << to_string(0/3600) <<'\n';
+    cout << 123 <<'\n';
     return 0;
 }
