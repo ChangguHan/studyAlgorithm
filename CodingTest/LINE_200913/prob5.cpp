@@ -154,24 +154,24 @@ int solution(vector<int> cards) {
 int main() {
 
     vector<int> cards;
-    // cards.push_back(12);
-    // cards.push_back(7);
-    // cards.push_back(11);
-    // cards.push_back(6);
-    // cards.push_back(2);
-    // cards.push_back(12);
+    cards.push_back(12);
+    cards.push_back(7);
+    cards.push_back(11);
+    cards.push_back(6);
+    cards.push_back(2);
+    cards.push_back(12);
 
 
-    cards.push_back(1);
-    cards.push_back(1);
-    cards.push_back(1);
-    cards.push_back(1);
-    cards.push_back(1);
-    cards.push_back(1);
-    cards.push_back(1);
-    cards.push_back(1);
-    cards.push_back(1);
-    cards.push_back(1);
+    // cards.push_back(1);
+    // cards.push_back(1);
+    // cards.push_back(1);
+    // cards.push_back(1);
+    // cards.push_back(1);
+    // cards.push_back(1);
+    // cards.push_back(1);
+    // cards.push_back(1);
+    // cards.push_back(1);
+    // cards.push_back(1);
     // [10, 13, 10, 1, 2, 3, 4, 5, 6, 2]
 
 

@@ -47,6 +47,7 @@ vector<int> solution(int n) {
 }
 int main() {
     int n= 2373425;
+    int b; cin >>b;
     for(int x : solution(n)) cout << x << '\n';
     return 0;
 }
